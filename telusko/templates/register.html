@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/s2.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+  
+    {% csrf_token %}
+    <div class="registercontainer">
+        <h1>Register Here</h1>
+        
+        <form action="/login" method="post">
+            <div class="row">
+                <div class="left">
+                    <p>First Name:</p>
+                    <input type="text" id="fname" placeholder="Enter your first name">
+                    
+                </div>
+                <div class="right">
+                    <p>Last Name:</p>
+                    <input type="text" id="lname" placeholder="Enter your Last name">
+                </div>
+                <div class="right">
+                    <p>User Name:</p>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Email:</p>
+                    <input type="text" id="email" placeholder="Enter your Email">
+                </div>
+                <div class="right">
+                    <p>Phone Number:</p>
+                    <input type="number" id="phonenumber" placeholder="Enter your Phone Number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Password:</p>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div class="right">
+                    <p>Confirm Password:</p>
+                    <input type="password" id="cpassword" placeholder="Confirm Password">
+                </div>
+            </div>
+            
+            <input type="submit" value="Sign Up">
+            <a href='/login'>Already have an account</a>
+        </form>
+        
+    </div>
+</body>
+</html>

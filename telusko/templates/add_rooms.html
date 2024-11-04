@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Virtual-Broker{% endblock title %}
+
+
+{% block body %}
+
+      <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    {%if succ %}
+                        <div class="alert alert-success" role="alert">
+                        {{succ}}
+                        </div>
+                    {% endif %}
+                    <h1 class="text-center">Please Fill Room/PG Details</h1>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+
+                    <div class="dropdown mb-4">
+                    Category:
+                    <select name="category">
+                        <option value="student">Student Rooms</option>
+                        <option value="pg">Payee Guest(PG)</option>
+                        <option value="flat">Flat</option>
+                    </select>
+                    </div>
+
+
+                    <div class="dropdown">
+                    Type:
+                    <select name="rtype">
+                        <option value="girls">Girls</option>
+                        <option value="boys">Boys</option>
+                    </select>
+                    </div>
+
+                      <label class="label col-md-3 control-label">City *</label>
+                    <div>
+                        <input type="text" class="form-control" name="city" placeholder="Please Enter city name" required>
+                    </div>
+
+                    <label class="label col-md-3 control-label">Area *</label>
+                    <div>
+                        <input type="text" class="form-control" name="area" placeholder="Please Enter Area name" required>
+                    </div>
+
+                    <label class="label col-md-3 control-label">Address *</label>
+                    <div>
+                        <input type="text" class="form-control" name="address" placeholder="Please Enter the Complete Address or use a map" required>
+                    </div>
+
+                    <label class="label col-md-3 control-label">Price *</label>
+                    <div>
+                        <input type="text" class="form-control" name="price" placeholder="Please Enter the rent price" required>
+
+                    </div>
+
+
+                    <div class="bttn">
+
+                        <button type="submit" class="btn btn-success btttn">SUBMIT</button>
+
+                    </div>
+
+
+                    </form>
+                <div class="col-md-3"></div>
+        </div>
+    </div>
+
+
+{% endblock body %}

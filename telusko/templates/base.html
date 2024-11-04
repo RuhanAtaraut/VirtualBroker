@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/Door_key.jpeg' %}" type="">
+    <link rel="stylesheet" href="{% static 'styles/s2.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style_viv.css' %}">
+
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <title>{% block title %} {% endblock title %}</title>
+</head>
+<body>
+    <!--Navbar start-->
+        <nav class="navbar " style="background-color: transparent;">
+        <ul>
+            <div class="logo"><img src="{% static 'images/Door_key.jpeg' %}"></div>
+            <!--<img src="images/Door_key.jpeg" alt="logo"></div>-->
+
+            {% if user.is_authenticated %}
+                <li><a href="/addrooms">Add Rooms </a></li>
+                <li><a href="/addmess"> Add mess </a></li>
+                <li><a href="{% url 'userlogout' %}"> Logout</a></li>
+            {% else %}
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/about"> About </a></li>
+                <li><a href="/contact"> Contact </a></li>
+                <li><a href="/log"> Login</a></li>
+                <li><a href="/signup"> SignUp</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!--Navbar end-->
+
+    {% block body %}
+    {% endblock body %}
+
+    <!--Footer start-->
+    <!--Footer end-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+    
+
+
+</body>
+</html>

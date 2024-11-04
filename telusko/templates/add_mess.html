@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Virtual-Broker{% endblock title %}
+
+
+{% block body %}
+
+
+      <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    {%if succ %}
+                        <div class="alert alert-success" role="alert">
+                        {{succ}}
+                        </div>
+                    {% endif %}
+                    <h1 class="text-center">Please Fill Your Mess Details</h1>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+
+                    <label class="label col-md-3 control-label">Name *</label>
+                    <div>
+                        <input type="text" class="form-control" name="name" placeholder="Please Enter the name of your Mess" required>
+                    </div>
+
+
+                    <div class="dropdown mb-2 mt-3">
+                    Category:
+                    <select name="messtype">
+                        <option value="veg">Vegetarian</option>
+                        <option value="nonveg">Non-vegetarian</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                    </div>
+
+                      <label class="label col-md-3 control-label">City *</label>
+                    <div>
+                        <input type="text" class="form-control" name="city" placeholder="Please Enter city name" required>
+                    </div>
+
+                    <label class="label col-md-3 control-label">Area *</label>
+                    <div>
+                        <input type="text" class="form-control" name="area" placeholder="Please Enter Area name" required>
+                    </div>
+
+                    <label class="label col-md-3 control-label">Address *</label>
+                    <div>
+                        <input type="text" class="form-control" name="address" placeholder="Please Enter the Complete Address or use a map" required>
+                    </div>
+
+                    <label class="label col-md-3 control-label">Price *</label>
+                    <div>
+                        <input type="text" class="form-control" name="price" placeholder="Please Enter the rent price" required>
+
+                    </div>
+
+
+                    <div class="bttn">
+
+                        <button type="submit" class="btn btn-success btttn">SUBMIT</button>
+
+                    </div>
+
+
+                    </form>
+
+
+                </div>
+                <div class="col-md-3"></div>
+        </div>
+    </div>
+
+{% endblock body %}

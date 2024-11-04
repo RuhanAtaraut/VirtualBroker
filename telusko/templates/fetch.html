@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %} 
+
+    {% block title %}Virtual-Broker{% endblock title %}
+
+
+{% block body %}
+    <div class="container">
+        <section>
+            <form method="post" id="indexForm" data-courses-url="{% url 'load_courses' %}">
+         {% csrf_token %}
+        <label>Select city</label>
+        <select name="programming" id="programming">
+            <option value="">---select City---</option>
+            {% for i in cities %}
+            <option value="{{i.room_cities_id}}">{{i.room_city_name}}</option>
+            {% endfor %}
+        </select>
+        <label>Select Area</label>
+         <select name="courses" id="courses">
+            <option value="" name="area">---select Area---</option>
+        </select>
+        <label>Select type</label>
+         <select name="type" id="type">
+            <option value="boys">Boys</option>
+             <option value="girls">Girls</option>
+        </select>
+         <label>Price</label>
+         <select name="price" id="price">
+            <option value="0-1000">0 - 1000</option>
+             <option value="1001-2000">1001-2000</option>
+             <option value="2001-3000">2001-3000</option>
+             <option value="3001-4000">3001-4000</option>
+             <option value="4001-5000">4001-5000</option>
+             <option value="Above 5000">Above 5000</option>
+        </select>
+
+        <input type = "submit" value="Submit">
+    </form>
+        </section>
+    </div>
+<br><br>
+<div class="container m-6 text-center">
+{%if error %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+{% endif %}
+<div class="container">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Owner Name</th>
+      <th scope="col">Owner Surname</th>
+      <th scope="col">City</th>
+      <th scope="col">Contact No</th>
+      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in room_details %}
+    <tr>
+            {% for j in i %}
+                <td>{{j}}</td>
+            {%endfor%}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#programming").change(function () {
+      var url = $("#indexForm").attr("data-courses-url");  // get the url of the `load_courses` view
+      var programmingId = $(this).val();  // get the selected programming ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/load-courses/)
+        data: {
+          'programming': programmingId       // add the programming id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_courses` view function
+          $("#courses").html(data);  // replace the contents of the course input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
+{% endblock body %}

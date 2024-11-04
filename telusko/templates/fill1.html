@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %} 
+
+    {% block title %}Virtual-Broker{% endblock title %}
+
+
+{% block body %}
+    <div class="box-main background-fill">
+        <form action="/fill1" method="post">
+            {% csrf_token %}
+        <div class="details">
+            <h1>Enter The Following Details of PG:</h1>
+            <div class="detail-list ">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name">
+            </div>
+               <div class="detail-list">
+                <label for="city" >City</label>
+                <select name="city" id="city">
+                        <option value="Belgaum">Belgaum</option>
+                        <option value="Raibag">Raibag</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Mysore">Mysore</option>
+                        <option value="Gadag">Gadag</option>
+                </select>
+              
+                
+            </div>
+                <div class="detail-list">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Your Address">
+            </div>
+                <div class="detail-list">
+                <label for="contact">Contact</label>
+                <input type="text" id="contact" name="contact" placeholder="Your Contact Number">
+            </div>
+                <div class="detail-list">
+                <label for="price"> Price</label>
+                <input type="number" id="price" name="price" placeholder="Price">
+            </div>
+
+            <div class="submit-button">
+                <button type="submit" class="btn">Submit</button>
+               
+            </div>
+        </div>
+        </form>
+    </div>
+
+{% endblock body %}

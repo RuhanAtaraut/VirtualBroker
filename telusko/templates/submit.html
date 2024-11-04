@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %} 
+
+    {% block title %}Virtual-Broker{% endblock title %}
+
+
+{% block body %}
+    
+    {% csrf_token %}
+    <div class="box-main background">
+        <section class="firstSection">
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Room Type</th>
+                    <th scope="col">city</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                {% for res in result %}
+                <tr>
+                    <td scope="row">{{res.category}}</td>
+                    <td>{{res.rtype}}</td>
+                    <td>{{res.city}}</td>
+                    <td>{{res.area}}</td>
+                    <td>{{res.address}}</td>
+                    <td>{{res.price}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    </div>
+
+{% endblock body %}

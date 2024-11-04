@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Virtual-Broker{% endblock title %}
+
+
+{% block body %}
+{% csrf_token %}
+<div class="about">
+    <div class="left">
+        <p>The Existing System of finding the rooms,PGs or houses for rent will takes place manually. It means that the
+            people who are in need of room/houses, they have to find by visiting each and every places of a particular
+            area where they want to stay.</p>
+        <ul>
+            <li>
+                <p>
+                    Problem 1: Waste of Time And Energy. Or if that is not possible for them, then they wish to take the
+                    help of Brokers based on Commission. Broker will charge to show the rooms/houses. This Commission is
+                    not only from customers side but also from the owner who belongs to that asset.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Problem 2:
+                    Cost Efficiency.(costly) Therefore this existing System is not reliable for new comers or the one
+                    who is new for the place or a city.
+                </p>
+            </li>
+        </ul>
+        <h3>
+            Proposed system:
+        </h3>
+        <p>
+            The Proposed System come-up with the solution for the problem faced earlier.
+            Proposed system acts as a bridge between the customer (user) and the owner of the rooms/houses.
+            This system mainly has two parts. One is with owner’s point of view and on the other hand user’s point of
+            view. <br />
+            If owner wants to upload the details of his belonging information about rooms/houses like, Name, City, Area,
+            Complete Address, Contact details and the price. All the details which he/she has entered will get stored in
+            the Database. <br /> <br />
+            Similarly for the user/customer system provides two filters. . <br /> <br />
+            Those are: <br />
+            i. Filter by price <br />
+            ii. Filter by city
+            <br />
+            <br />
+            By choosing the filters and submitting, user/customer will get all those details of rooms/houses which are
+            available in the database with respect to the chosen filters. . <br />
+            <br />
+            • Advantages of proposed system:
+            <br /> <br />
+             Easy to use i.e. User friendly.
+            <br />
+             Cost effective.
+            <br />
+             Reliable.
+            <br />
+             Saves lots of time and energy.
+        </p>
+    </div>
+    <div class="right">
+        <img src="{% static 'images/student_room1.jpeg' %}" alt="">
+    </div>
+</div>
+
+{% endblock body %}

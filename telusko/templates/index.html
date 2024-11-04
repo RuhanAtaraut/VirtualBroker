@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %} 
+
+    {% block title %}Virtual-Broker{% endblock title %}
+    
+
+
+{% block body %}
+    
+    {% csrf_token %}
+    
+    <div class="main">
+        <div class="left">
+                <h1>Virtual Broker - To search student rooms,</h1>
+                <h1>Virtual Broker - To search Mess</h1>
+               <div class="buttons">
+                    <a href="/fetch">Find Rooms</a>
+                    <a href="/fetch1">Find Mess</a>
+               </div>
+        </div>
+        
+       
+        <div class="right"> <img src="{% static 'images/student_room1.jpeg' %}" alt="">
+        </div>
+    </div>
+    <body>
+        <div class="mapcontainer" style="height: 30vh;
+                            background-color: #fff;
+                            padding-bottom: 15vh;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;"
+    >
+        <h1 class="heading" style="font-weight: 800; color:#292929">check out nearest yourself</h1>
+        <input type="text" placeholder="Enter location" id="location" style=" width: fit-content;
+        padding: 10px 30px;
+        border: 1px solid #000;
+        margin-bottom: 30px;
+        border-radius: 10px;">
+        <button id="btn" style=" width: fit-content;
+        padding: 10px 30px;
+        border: 1px solid #000;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        background-color: #007af4;
+    color: #fff;">Submit</button>
+      
+        <div id="map" style="background-color: #fff;">
+            
+        </div>
+    </div>
+       
+    </body>
+    <script>
+       const btn=document.getElementById("btn");
+        btn.addEventListener("click",()=>{
+
+           
+       const location = document.getElementById("location").value;
+       const mapcontainer = document.getElementById('map');
+   
+       const map = document.createElement('iframe');
+       console.log('hello')
+       const url=`https://www.google.com/maps/embed/v1/place?key=AIzaSyB3-YfOJTWnxiCeVQXvhsNzzMZYO4_MShc&q=${location}`
+       map.setAttribute("src",url);
+       map.setAttribute("width","1080");
+       map.setAttribute("height","600");
+       map.setAttribute("referrerpolicy","no-referrer-when-downgrade");
+       
+       mapcontainer.style.height="50vh"
+       if(!mapcontainer.hasChildNodes)
+       {
+
+           mapcontainer.appendChild(map);
+       }
+       else 
+       {
+              mapcontainer.removeChild(mapcontainer.lastChild)
+              mapcontainer.appendChild(map);
+       }
+       window.scrollTo(0, document.body.scrollHeight);
+       
+   })
+    </script>
+    
+
+{% endblock body %}
